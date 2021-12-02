@@ -9,6 +9,8 @@
     <!--==================== ICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
 
+    <!-- <script src="https://kit.fontawesome.com/487e9c4890.js" crossorigin="anonymous"></script> -->
+
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="assets/css/styles.css">
 
@@ -16,6 +18,7 @@
 </head>
 
 <body>
+
     <div class="container">
 
         <!--==================== HEADER ====================-->
@@ -33,9 +36,91 @@
                     <li>My Blog</li>
                 </ul>
 
-                <button type="submit">Log In</button>
+                <a type="submit" class="button--flex login__button">
+                    Log In
+                </a>
+
             </div>
         </header>
+
+
+        <!-- =============================login Page======================== -->
+        <div class="login__modal">
+            <div class="login-modal_container">
+
+                <div class="modal-content login-content">
+                    <h3 class="login__modal-title">Welcome back</h3>
+                    <i class="uil uil-times login-modal-close">Close</i>
+
+                    <div class="user-input">
+                        <label for="name-email">Email or Username</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+                    <div class="user-input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="passwordLogin" required>
+                    </div>
+
+                    <div class="button button--flex login-button">
+                        <a href="#">Login</a>
+                    </div>
+
+                    <p>OR</p>
+
+
+                    <div class="Outh-app">
+
+                    </div>
+                    <p>Dont have an account?<a href="#" class="signupLink">Sign up</a></p>
+
+                </div>
+            </div>
+
+        </div>
+
+        <!-- =============================SignUP Page======================== -->
+        <div class="signup__modal">
+            <div class="signup-modal_container">
+
+                <div class="modal-content signup-content">
+                    <h3 class="signup__modal-title">Welcome</h3>
+                    <i class="uil uil-times signup-modal-close">Close</i>
+
+                    <div class="user-input">
+                        <label for="username">Username</label>
+                        <input type="text" name="username" id="username" required>
+                    </div>
+
+                    <div class="user-input">
+                        <label for="Phone">Phone</label>
+                        <input type="tel" name="phone" id="phone" required>
+                    </div>
+
+                    <div class="user-input">
+                        <label for="email">Email</label>
+                        <input type="email" name="email" id="email" required>
+                    </div>
+                    <div class="user-input">
+                        <label for="password">Password</label>
+                        <input type="password" name="password" id="passwordSign" required>
+                    </div>
+
+                    <div class="button button--flex signup-button">
+                        <a href="#">Sign Up</a>
+                    </div>
+
+                    <p>OR</p>
+
+
+                    <div class="Outh-app">
+
+                    </div>
+                    <p>You have an account?<a href="#" class="loginLink">Login</a></p>
+
+                </div>
+            </div>
+
+        </div>
 
         <!--=============================== LANDING =============================-->
         <div class="landing">
@@ -171,6 +256,7 @@
             </div>
         </div>
 
+
         <!--==================== Contact====================-->
         <div class="contact">
             <div class="contact-title">
@@ -206,7 +292,7 @@
 
 
                             <label for="phone"></label>
-                            <input type="phone" name="phone" id="phone-field" placeholder="Phone Number">
+                            <input type="tel" name="phone" id="phone-field" placeholder="Phone Number">
 
 
 
@@ -221,6 +307,8 @@
                 </div>
             </div>
         </div>
+
+
         <!--==================== Footer ====================-->
         <div class="footer">
 
@@ -234,44 +322,66 @@
                         <div class="sub-details">
                             <h4>Join My Newsletter</h4>
 
-                            <label for="news-email"></label>
-                            <input type="email" name="email" id="news-email"
-                                placeholder="Enter your email"><span><button>
-                                    subcribe
-                                    Now
-                                </button></span>
+                            <div class="email-input">
+
+                                <label for="news-email"></label>
+                                <input type="email" name="email" id="news-email" placeholder="Enter your email">
+                                <span><button class="button button--flex">
+                                        Subcribe Now
+                                    </button></span>
+                            </div>
+
                         </div>
 
 
-                        <div class="up-arrow">
-                            <a href="#">Arrow</a>
-                        </div>
+                        <!--  <div class="up-arrow">
+                            <a href="#">
+                                <i class="fas fa-arrow-up"></i>
+                            </a>
+
+                        </div> -->
                     </div>
-
-
-
 
                 </div>
 
                 <div class="links">
+
                     <div class="logo-blue">
                         <img src="assets/images/TTechBlue.png" alt="company's logo" width="140" height="110">
-
-                        <div class="links">
-                            <ul>
-                                <li>Home</li>
-                                <li>About Me</li>
-                                <li>Contact Us</li>
-                                <li>My Blog</li>
-                            </ul>
-                        </div>
-
-                        <div class="socials">
-                            <div class="linkdin">
-
-                            </div>
-                        </div>
                     </div>
+
+                    <div class="links_list">
+                        <ul>
+                            <li>Home</li>
+                            <li>About Me</li>
+                            <li>Contact Us</li>
+                            <li>My Blog</li>
+                        </ul>
+                    </div>
+
+                    <div class="socials">
+                        <ul>
+                            <li><a href="#">
+                                    <span><i class="uil uil-linkedin"></i></span></a></li>
+
+                            <li><a href="#">
+                                    <span>
+                                        <i class="uil uil-facebook"></i>
+                                    </span></a></li>
+
+                            <li><a href="#">
+                                    <span>
+                                        <i class="uil uil-instagram-alt"></i>
+                                    </span></a></li>
+
+                            <li><a href="#">
+                                    <span>
+                                        <i class="uil uil-twitter"></i>
+                                    </span></a></li>
+                        </ul>
+
+                    </div>
+
                 </div>
 
                 <div class="copyright">
