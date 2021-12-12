@@ -8,11 +8,15 @@
 
     <!--==================== ICONS ====================-->
     <link rel="stylesheet" href="https://unicons.iconscout.com/release/v4.0.0/css/line.css">
+    <!-- ====================Iconify==================== -->
+    <script src="https://code.iconify.design/2/2.1.0/iconify.min.js"></script>
 
     <!-- <script src="https://kit.fontawesome.com/487e9c4890.js" crossorigin="anonymous"></script> -->
 
     <!--==================== CSS ====================-->
     <link rel="stylesheet" href="assets/css/styles.css">
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-default/default.css" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 
     <title>My Brand</title>
 </head>
@@ -26,6 +30,7 @@
             <div class="nav">
                 <a href="#" class="nav_logo">
                     <img src="assets/images/tTechLogo.png" alt="Ttech logo" width="140" height="110">
+
                 </a>
 
 
@@ -36,8 +41,8 @@
                     <li>My Blog</li>
                 </ul>
 
-                <a type="submit" class="button--flex login__button">
-                    Log In
+                <a type="submit" class="button--flex login__button ">
+                    Log In<i class="uil uil-signin"></i>
                 </a>
 
             </div>
@@ -54,7 +59,7 @@
 
                     <div class="user-input">
                         <label for="name-email">Email or Username</label>
-                        <input type="text" name="username" id="username" required>
+                        <input type="text" name="username" id="usernameLog" required>
                     </div>
                     <div class="user-input">
                         <label for="password">Password</label>
@@ -65,11 +70,17 @@
                         <a href="#">Login</a>
                     </div>
 
-                    <p>OR</p>
+                    <p class="or">OR</p>
 
 
                     <div class="Outh-app">
+                        <a href="#"><span class="iconify" data-icon="flat-color-icons:google" data-width="60"
+                                data-height="60"></span></a>
 
+                        <a href="#"><span class="iconify" data-icon="logos:linkedin-icon" data-width="60"
+                                data-height="60"></span></a>
+                        <a href="#"><span class="iconify" data-icon="bi:github" data-width="60"
+                                data-height="60"></span></a>
                     </div>
                     <p>Dont have an account?<a href="#" class="signupLink">Sign up</a></p>
 
@@ -86,44 +97,56 @@
                     <h3 class="signup__modal-title">Welcome</h3>
                     <i class="uil uil-times signup-modal-close">Close</i>
 
-                    <div class="user-input">
-                        <label for="username">Username</label>
-                        <input type="text" name="username" id="username" required>
-                    </div>
+                    <form action="#" novalidate>
 
-                    <div class="user-input">
-                        <label for="Phone">Phone</label>
-                        <input type="tel" name="phone" id="phone" required>
-                    </div>
 
-                    <div class="user-input">
-                        <label for="email">Email</label>
-                        <input type="email" name="email" id="email" required>
-                    </div>
-                    <div class="user-input">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="passwordSign" required>
-                    </div>
+                        <div class="user-input">
+                            <label for="username">Username</label>
+                            <input type="text" name="username" id="usernameSign" required>
+                        </div>
 
+                        <div class="user-input">
+                            <label for="Phone">Phone</label>
+                            <input type="tel" name="phone" id="signPhone" required>
+                        </div>
+
+                        <div class="user-input">
+                            <label for="email">Email</label>
+                            <input type="email" name="email" id="email" required>
+                        </div>
+
+                        <div class="user-input">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="passwordSign" required>
+                        </div>
+                    </form>
                     <div class="button button--flex signup-button">
-                        <a href="#">Sign Up</a>
+                        <a href="#" id="signUp">Sign Up</a>
                     </div>
 
-                    <p>OR</p>
+                    <!-- <p>OR</p> -->
 
 
-                    <div class="Outh-app">
+                    <!-- <div class="Outh-app">
+                        <a href="#"><span class="iconify" data-icon="flat-color-icons:google" data-width="60"
+                                data-height="60"></span></a>
 
-                    </div>
+                        <a href="#"><span class="iconify" data-icon="logos:linkedin-icon" data-width="60"
+                                data-height="60"></span></a>
+                        <a href="#"><span class="iconify" data-icon="bi:github" data-width="60"
+                                data-height="60"></span></a>
+                    </div> -->
                     <p>You have an account?<a href="#" class="loginLink">Login</a></p>
-
                 </div>
-            </div>
 
+
+            </div>
         </div>
 
+
+
         <!--=============================== LANDING =============================-->
-        <div class="landing">
+        <section class="landing">
             <div class="intro">
 
                 <div class="intro_text">
@@ -167,10 +190,10 @@
             <div class="side_image">
                 <img src="assets/images/profile.jpg" alt="man doing analysis" width="auto" height="400px">
             </div>
-        </div>
-        <div class="about-blog">
-            <!--========================== ABOUT =============================-->
+        </section>
 
+        <!--==================== ABOUT =====================-->
+        <section class="about-blog">
             <div class="about">
 
                 <div class="about_image">
@@ -207,58 +230,56 @@
                     </div>
                 </div>
             </div>
+        </section>
+        <!--==================== My Blog ==================-->
+        <section class="blog">
+            <div class="blog-title">
+                <h2>My Blog</h2>
+            </div>
 
-            <!--==================== My Blog ====================-->
-            <div class="blog">
-                <div class="blog-title">
-                    <h2>My Blog</h2>
+            <div class="blog-description">
+                <p>Check my articles on tech and tools, feel free to give us comments and share your thoughts with
+                    community</p>
+            </div>
+
+            <div class="articles">
+                <div class="big-card article">
+                    <h3>DevOps</h3>
+                    <p>
+                        How to automate deployments and manage your containerized apps in a Kubernetes environments?
+
+                    </p>
+                    <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
+                        </span></a>
                 </div>
 
-                <div class="blog-description">
-                    <p>Check my articles on tech and tools, feel free to give us comments and share your thoughts with
-                        community</p>
+                <div class="big-card article">
+                    <h3>Data Visualization</h3>
+                    <p>
+                        Learn to visualize your data with different plots and dashboards using
+                        D3.js library in this tutorial
+
+                    </p>
+                    <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
+
+                        </span></a>
                 </div>
 
-                <div class="articles">
-                    <div class="big-card article">
-                        <h3>DevOps</h3>
-                        <p>
-                            How to automate deployments and manage your containerized apps in a Kubernetes environments?
+                <div class="big-card article">
+                    <h3>Data Science</h3>
+                    <p>
+                        Starting a new project can be overwhelming, Read here Things that are crucial to kickstart
+                        your datascience project.
 
-                        </p>
-                        <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
-                            </span></a>
-                    </div>
-
-                    <div class="big-card article">
-                        <h3>Data Visualization</h3>
-                        <p>
-                            Learn to visualize your data with different plots and dashboards using
-                            D3.js library in this tutorial
-
-                        </p>
-                        <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
-
-                            </span></a>
-                    </div>
-
-                    <div class="big-card article">
-                        <h3>Data Science</h3>
-                        <p>
-                            Starting a new project can be overwhelming, Read here Things that are crucial to kickstart
-                            your datascience project.
-
-                        </p>
-                        <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
-                            </span></a>
-                    </div>
+                    </p>
+                    <a href="#">Full story<span><i class="uil uil-external-link-alt"></i>
+                        </span></a>
                 </div>
             </div>
-        </div>
+        </section>
 
-
-        <!--==================== Contact====================-->
-        <div class="contact">
+        <!--==================== Contact===================-->
+        <section class="contact">
             <div class="contact-title">
                 <h2>Contact Us</h2>
             </div>
@@ -278,38 +299,38 @@
 
                     <div class="form-container">
 
-                        <form action="#" class="form">
+                        <form class="form" id="contactForm">
 
                             <label for="name"></label>
-                            <input type="text" name="name" id="name-field" placeholder="Enter your name">
+                            <input type="text" name="name" id="name-field" placeholder="Enter your name" required>
 
 
 
                             <label for="email"></label>
-                            <input type="email" name="email" id="email-field" placeholder="Enter your Email">
+                            <input type="email" name="email" id="email-field" placeholder="Enter your Email" required>
 
 
 
 
                             <label for="phone"></label>
-                            <input type="tel" name="phone" id="phone-field" placeholder="Phone Number">
+                            <input type="tel" name="phone" id="phone-field" placeholder="Phone Number" required>
 
 
 
                             <textarea name="feedback" id="feedback" cols="30" rows="10"
-                                placeholder="Type Your Message...">
+                                placeholder="Type Your Message..." required>
                         </textarea>
 
-                            <button class="button button--flex button--small">Send<br><span><i
+                            <button class="button button--flex button--small" id="submit-form">Send<br><span><i
                                         class="uil uil-message"></i></span></button>
                         </form>
                     </div>
                 </div>
             </div>
-        </div>
+        </section>
 
 
-        <!--==================== Footer ====================-->
+        <!--==================== Footer ===================-->
         <div class="footer">
 
             <div class="footer-container">
@@ -332,15 +353,12 @@
                             </div>
 
                         </div>
-
-
-                        <!--  <div class="up-arrow">
-                            <a href="#">
-                                <i class="fas fa-arrow-up"></i>
-                            </a>
-
-                        </div> -->
                     </div>
+
+                    <a target="#" class="up-home" id="uphome">
+                        <span class="iconify" data-icon="bi:arrow-up" style="color: #2036ff;" data-width="50"
+                            data-height="40"></span>
+                    </a>
 
                 </div>
 
@@ -382,16 +400,31 @@
 
                     </div>
 
+
                 </div>
+
+                <div class="divider"></div>
 
                 <div class="copyright">
                     <p>© 2021 TTech. All rights reserved.</p>
+
+
                 </div>
             </div>
 
         </div>
+
+    </div>
     </div>
     <!--==================== Script ====================-->
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js""></script>
+    <script src=" https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+    <script src=" https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+
+    <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+
+    <script src="assets/js/firebase.js"></script>
+    <script src="assets/js/app.js"></script>
     <script src="assets/js/script.js"></script>
 </body>
 
