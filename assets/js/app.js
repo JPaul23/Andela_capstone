@@ -2,6 +2,7 @@
 let mainFunc = {};
 
 (() => {
+    const auth = app_firebase.auth(); //initialize auth of firebase
 
     /******************** sign up user ******************** */
     const username = document.getElementById('usernameSign'),
@@ -17,7 +18,91 @@ let mainFunc = {};
     });
 
 
+    /************************ LOGIN ********************* */
+    //only email for now!!
+    const userLog = document.getElementById('usernameLog'),
+        password = document.getElementById('passwordLogin'),
+        login = document.querySelector('.login-button');
+
+    login.addEventListener('click', () => {
+        logIn(userLog, password);
+        const user = auth.currentUser;
+
+        if (user) {
+            console.log(user.Name);
+        } else {
+            console.log('No user is signed in.');
+        }
+    });
+
+    /************************ SIGN OUT********************* */
+
+
+    //currently signed in user
+
+
+
+    //login Function
+    function logIn(email, password) {
+
+        let user = null;
+        auth.signInWithEmailAndPassword(email.value, password.value)
+            .then((Credential) => {
+                user = Credential.user;
+                console.log(`user uid: ${user}`);
+                Swal.fire({  //swall message
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    text: ` You successfully logged in`,
+                    button: 'Dismiss',
+                });
+                loginPage.classList.remove('active-modal');
+            })
+            .catch(err => {
+                Swal.fire({  //swal message
+                    position: 'center',
+                    icon: 'error',
+                    title: err.code,
+                    text: err.message,
+                    showConfirmButton: false,
+                    timer: 3500
+                });
+            });
+    }
+
+
+    //sign Out function
+    function signOut() {
+        let uid = null;
+        auth.signInWithEmailAndPassword(email, password)
+            .then((Credential) => {
+                uid = Credential.user.uid;
+                console.log(`user uid: ${uid}`);
+                Swal.fire({  //swall message
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    text: ` You successfully logged in`,
+                    button: 'Dismiss',
+                });
+                loginPage.classList.remove('active-modal');
+            })
+            .catch(err => {
+                Swal.fire({  //swal message
+                    position: 'center',
+                    icon: 'error',
+                    title: err.code,
+                    text: err.message,
+                    showConfirmButton: false,
+                    timer: 3500
+                });
+            });
+    }
+
+    //signup function
     function signUp() {
+        let uid = null;
         var usermail = userEmail.value;
         var userPhone = phone.value;
         var userName = username.value;
@@ -25,18 +110,17 @@ let mainFunc = {};
         console.log(usermail, userPhone, userName, pswd);
 
         //conditions
-        const auth = app_firebase.auth();
+
         //signing
-        auth.createUserWithEmailAndPassword(usermail, pswd).then(user => {
-            /* uid = credential.user.uid; //capturing the uid of the user */
-            storeData(userName, userPhone, usermail, pswd);
+        auth.createUserWithEmailAndPassword(usermail, pswd).then((credential) => {
+            uid = credential.user.uid; //capturing the uid of the user
+            storeUserData(userName, userPhone, usermail, pswd, uid);
 
             Swal.fire({  //swall message
                 position: 'center',
                 icon: 'success',
                 title: 'Success',
                 text: `${userName} ,Your Account has been Created, you can login now`,
-                showConfirmButton: false,
                 button: 'Dismiss',
             });
             //removing class on signup and login page
@@ -45,25 +129,59 @@ let mainFunc = {};
 
 
         }).catch(err => {
-            Swal.fire({  //swall message
+            Swal.fire({  //swal message
                 position: 'center',
                 icon: 'error',
-                title: 'Error happened',
+                title: 'Something Is Wrong',
                 text: err.message,
                 showConfirmButton: false,
                 timer: 3500
             });
             /*  console.log(err.message); */
-
         });
-        /*  if (usermail == false || userPhone == false || userName == false || pswd == "") console.log('something is wrong'); */
-
-
     }
+
+
+
+
+    /************************ SUBSCRIPTION ********************* */
+    const newsEmail = document.getElementById('news-email');
+    const subBtn = document.getElementById('subscribe');
+
+    subBtn.addEventListener('click', () => {
+        if (emailVerification(newsEmail) == true) {
+            var email = newsEmail.value;
+            //subcribing db instance
+            var subDb = createDb('NewsLetter');
+            subDb.push(email)
+                .then(() => {
+                    Swal.fire({
+                        title: "Good Job!",
+                        text: "You have been successfully added to our Newsletter",
+                        icon: "success",
+                    });
+                    newsEmail.value = "";
+
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+
+    });
+
+
     //creating user data in db
-    function storeData(name, phone, email, password) {
-        var database = app_firebase.database().ref('Users'); //db instance
-        database.push({
+    function createDb(name) {
+        //name has to be string
+        let database = app_firebase.database().ref(name);
+        return database;
+    }
+
+
+    function storeUserData(name, phone, email, password, userId) {
+        var database = createDb(`Users/${userId}`); //db instance
+        database.set({
             Name: name,
             Email: email,
             Phone: phone,
@@ -101,12 +219,10 @@ let mainFunc = {};
 
         const mailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
 
-        if (email.value.match(mailFormat)) return email.value;
-        else {
-            alert('Enter a valid email');
-            email.focus();
-            return false;
-        }
+        if (email.value.match(mailFormat)) return true;
+        //alert
+        alert('Enter a correct Email');
+        email.focus();
     }
     /*  app_firebase.auth().signInWithEmailAndPassword(email = 'email@gmail.com', password = 'paul122')
          .then((userCredential) => uid = userCredential.user.uid)
@@ -121,7 +237,6 @@ let mainFunc = {};
             console.log("success")
         }
     }
-    /************************ Subscription ********************* */
 
 
 })();
