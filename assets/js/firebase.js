@@ -21,11 +21,11 @@ let app_firebase = {};
     }
 
 
-    app_firebase.databaseApi = {
+    /* app_firebase.databaseApi = {
         create: createFnc
-        /*  read: readFnc,
+          read: readFnc,
          update: updateFnc,
-         delete: deleteFnc */
-    }
+         delete: deleteFnc 
+    } */
 
 })();

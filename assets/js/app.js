@@ -37,10 +37,73 @@ let mainFunc = {};
 
     /************************ SIGN OUT********************* */
 
+    /********************** FORM HANDLING ********************/
+    const nameForm = document.getElementById('name-field'),
+        emailForm = document.getElementById('email-field'),
+        phoneForm = document.getElementById('phone-field'),
+        textForm = document.getElementById('feedback'),
+        btnForm = document.getElementById('submit-form');
+    btnForm.addEventListener('click', () => {
+        var nameV = nameForm.value,
+            emailV = emailForm.value,
+            phoneV = phoneForm.value,
+            textV = textForm.value;
+        StoreFeedback(nameV, emailV, phoneV, textV);
+    });
+
+
+
+
+    //form submission function
+    function StoreFeedback(name, email, phone, text) {
+        var feedbackDB = createDb('Feedbacks');
+        feedbackDB.push({
+            Name: name,
+            Email: email,
+            Phone: phone,
+            Text: text,
+        })
+            .then(() => {
+                Swal.fire({  //swall message
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Thank you!',
+                    text: `Thank you ${name} for your feedback`,
+                    button: 'Dismiss',
+                });
+            })
+            .catch((err) => {
+                console.log(err.code);
+                console.log(err.message);
+            });
+    }
+    /************************ SUBSCRIPTION ********************* */
+    const newsEmail = document.getElementById('news-email');
+    const subBtn = document.getElementById('subscribe');
+
+    subBtn.addEventListener('click', () => {
+        if (emailVerification(newsEmail) == true) {
+            var email = newsEmail.value;
+            //subcribing db instance
+            var subDb = createDb('NewsLetter');
+            subDb.push(email)
+                .then(() => {
+                    Swal.fire({
+                        title: "Good Job!",
+                        text: "You have been successfully added to our Newsletter",
+                        icon: "success",
+                    });
+                    newsEmail.value = "";
+
+                })
+                .catch((err) => {
+                    console.log(err.message);
+                });
+        }
+
+    });
 
     //currently signed in user
-
-
 
     //login Function
     function logIn(email, password) {
@@ -142,35 +205,6 @@ let mainFunc = {};
     }
 
 
-
-
-    /************************ SUBSCRIPTION ********************* */
-    const newsEmail = document.getElementById('news-email');
-    const subBtn = document.getElementById('subscribe');
-
-    subBtn.addEventListener('click', () => {
-        if (emailVerification(newsEmail) == true) {
-            var email = newsEmail.value;
-            //subcribing db instance
-            var subDb = createDb('NewsLetter');
-            subDb.push(email)
-                .then(() => {
-                    Swal.fire({
-                        title: "Good Job!",
-                        text: "You have been successfully added to our Newsletter",
-                        icon: "success",
-                    });
-                    newsEmail.value = "";
-
-                })
-                .catch((err) => {
-                    console.log(err.message);
-                });
-        }
-
-    });
-
-
     //creating user data in db
     function createDb(name) {
         //name has to be string
@@ -199,7 +233,6 @@ let mainFunc = {};
         else {
             alert('Enter a valid name');
             name.focus();
-            return false;
         }
     }
 
@@ -211,7 +244,6 @@ let mainFunc = {};
         else {
             alert('Enter phone in 0732105432 format');
             phone.focus();
-            return false;
         }
     }
     //email verification
@@ -227,16 +259,5 @@ let mainFunc = {};
     /*  app_firebase.auth().signInWithEmailAndPassword(email = 'email@gmail.com', password = 'paul122')
          .then((userCredential) => uid = userCredential.user.uid)
          .catch((error) => console.log(error)); */
-
-
-    /* message handler */
-    function messageHandler(err) {
-        if (!!err) {
-            console.log(err)
-        } else {
-            console.log("success")
-        }
-    }
-
 
 })();

@@ -53,6 +53,7 @@ const phoneF = document.getElementById('phone-field');
 //form button
 const fomrBtn = document.getElementById('submit-form');
 
+
 fomrBtn.addEventListener('click', (evt) => {
     evt.preventDefault();
     nameVerification(nameF);
@@ -68,3 +69,23 @@ upHome.addEventListener('click', function () {
     window.scrollTo(0, 100);
     console.log('clicked');
 }); */
+//phone verifaction
+function phoneVerification(phone) {
+    const phoneFormat = /(^1300\d{6}$)|(^1800|1900|1902\d{6}$)|(^0[2|3|7|8]{1}[0-9]{8}$)|(^13\d{4}$)|(^04\d{2,3}\d{6}$)/;
+
+    if (phone.value.match(phoneFormat)) return phone.value;
+    else {
+        alert('Enter phone in 0732105432 format');
+        phone.focus();
+    }
+}
+
+function emailVerification(email) {
+
+    const mailFormat = /^(([^<>()\[\]\\.,;:\s@"]+(\.[^<>()\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+
+    if (email.value.match(mailFormat)) return true;
+    //alert
+    alert('Enter a correct Email');
+    email.focus();
+}
