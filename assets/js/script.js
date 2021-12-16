@@ -8,6 +8,8 @@ const loginPage = document.querySelector('.login__modal'),
     loginLink = document.querySelector('.loginLink'),
     login = document.querySelector('.login-button');
 
+
+
 loginBtn.addEventListener('click', () => {
     loginPage.classList.add('active-modal');
 });
@@ -42,8 +44,6 @@ loginLink.addEventListener('click', () => {
         }, 1000) */
 //  });
 //}); 
-/* =============sign up============ */
-
 
 /* ============contact form validation============ */
 const form = document.getElementById('contactForm');

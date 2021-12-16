@@ -35,7 +35,7 @@
 
 
                 <ul class="nav__list">
-                    <li>Home</li>
+                    <li id="logout">Home</li> <!-- as logout for now! -->
                     <li>About Me</li>
                     <li>Contact Us</li>
                     <li>My Blog</li>
@@ -55,23 +55,25 @@
 
                 <div class="modal-content login-content">
                     <h3 class="login__modal-title">Welcome back</h3>
+
                     <i class="uil uil-times login-modal-close">Close</i>
 
-                    <div class="user-input">
-                        <label for="name-email">Email or Username</label>
-                        <input type="text" name="username" id="usernameLog" required>
-                    </div>
-                    <div class="user-input">
-                        <label for="password">Password</label>
-                        <input type="password" name="password" id="passwordLogin" required>
-                    </div>
+                    <form action="#" id="login-form">
+                        <div class="user-input">
+                            <label for="name-email">Email or Username</label>
+                            <input type="text" name="username" id="usernameLog" required>
+                        </div>
+                        <div class="user-input">
+                            <label for="password">Password</label>
+                            <input type="password" name="password" id="passwordLogin" required>
+                        </div>
+                    </form>
 
                     <div class="button button--flex login-button">
                         <a href="#">Login</a>
                     </div>
 
                     <p class="or">OR</p>
-
 
                     <div class="Outh-app">
                         <a href="#"><span class="iconify" data-icon="flat-color-icons:google" data-width="60"
@@ -97,7 +99,7 @@
                     <h3 class="signup__modal-title">Welcome</h3>
                     <i class="uil uil-times signup-modal-close">Close</i>
 
-                    <form action="#" novalidate>
+                    <form id="signup-form" action="#">
 
 
                         <div class="user-input">

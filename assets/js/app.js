@@ -12,28 +12,29 @@ let mainFunc = {};
         signupPage = document.querySelector('.signup__modal'),
         loginPage = document.querySelector('.login__modal');
 
-    const signUpBtn = document.getElementById('signUp');
+    const signUpBtn = document.getElementById('signUp'),
+        signUpForm = document.getElementById('signup-form');
+
     signUpBtn.addEventListener('click', (evt) => {
         signUp();
+        signUpForm.reset();
     });
 
 
     /************************ LOGIN ********************* */
     //only email for now!!
-    const userLog = document.getElementById('usernameLog'),
+    const logInForm = document.getElementById('login-form'),
+        userLog = document.getElementById('usernameLog'),
         password = document.getElementById('passwordLogin'),
         login = document.querySelector('.login-button');
 
+    //***************getting the current user **************
+
     login.addEventListener('click', () => {
         logIn(userLog, password);
-        const user = auth.currentUser;
-
-        if (user) {
-            console.log(user.Name);
-        } else {
-            console.log('No user is signed in.');
-        }
+        logInForm.reset();//reset the form
     });
+
 
     /************************ SIGN OUT********************* */
 
@@ -118,9 +119,10 @@ let mainFunc = {};
                     icon: 'success',
                     title: 'Success',
                     text: ` You successfully logged in`,
-                    button: 'Dismiss',
+                    time: '2500',
                 });
                 loginPage.classList.remove('active-modal');
+                window.location.replace('dashboard.html');
             })
             .catch(err => {
                 Swal.fire({  //swal message
@@ -136,32 +138,32 @@ let mainFunc = {};
 
 
     //sign Out function
-    function signOut() {
-        let uid = null;
-        auth.signInWithEmailAndPassword(email, password)
-            .then((Credential) => {
-                uid = Credential.user.uid;
-                console.log(`user uid: ${uid}`);
-                Swal.fire({  //swall message
-                    position: 'center',
-                    icon: 'success',
-                    title: 'Success',
-                    text: ` You successfully logged in`,
-                    button: 'Dismiss',
-                });
-                loginPage.classList.remove('active-modal');
-            })
-            .catch(err => {
-                Swal.fire({  //swal message
-                    position: 'center',
-                    icon: 'error',
-                    title: err.code,
-                    text: err.message,
-                    showConfirmButton: false,
-                    timer: 3500
-                });
-            });
-    }
+    /*   function signOut() {
+          let uid = null;
+          auth.signInWithEmailAndPassword(email, password)
+              .then((Credential) => {
+                  uid = Credential.user.uid;
+                  console.log(`user uid: ${uid}`);
+                  Swal.fire({  //swall message
+                      position: 'center',
+                      icon: 'success',
+                      title: 'Success',
+                      text: ` You successfully logged in`,
+                      button: 'Dismiss',
+                  });
+                  loginPage.classList.remove('active-modal');
+              })
+              .catch(err => {
+                  Swal.fire({  //swal message
+                      position: 'center',
+                      icon: 'error',
+                      title: err.code,
+                      text: err.message,
+                      showConfirmButton: false,
+                      timer: 3500
+                  });
+              });
+      } */
 
     //signup function
     function signUp() {
@@ -174,7 +176,7 @@ let mainFunc = {};
 
         //conditions
 
-        //signing
+        //signing in
         auth.createUserWithEmailAndPassword(usermail, pswd).then((credential) => {
             uid = credential.user.uid; //capturing the uid of the user
             storeUserData(userName, userPhone, usermail, pswd, uid);
@@ -186,6 +188,7 @@ let mainFunc = {};
                 text: `${userName} ,Your Account has been Created, you can login now`,
                 button: 'Dismiss',
             });
+
             //removing class on signup and login page
             signupPage.classList.remove('active-modal');
             loginPage.classList.remove('active-modal');
@@ -225,6 +228,10 @@ let mainFunc = {};
             .catch((err) => { console.log(err.message) });
 
     }
+
+
+    /* ===================End firebase ================ */
+
 
     //username verification
     function nameVerification(name) {
