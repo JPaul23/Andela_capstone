@@ -45,23 +45,46 @@ let mainFunc = {};
     //Create an instance of the Google provider 
     function googleSignIn() {
         const gProvider = new firebase.auth.GoogleAuthProvider();
-        auth.signInWithPopup(gProvider)
+        SignWithPopup(gProvider);
+    }
+
+    /*================ FaceBook ========== */
+
+    /*================ Github ============= */
+
+    const gitBtn = document.getElementById('github-btn');
+    gitBtn.addEventListener('click', () => {
+        gitSignIn();
+    });
+
+    //Create an instance of the Google provider 
+    function gitSignIn() {
+        const gitProvider = new firebase.auth.GithubAuthProvider();
+        SignWithPopup(gitProvider);
+
+    }
+
+
+    //sign with popup
+    function SignWithPopup(provider) {
+        auth.signInWithPopup(provider)
             .then((result) => {
                 /* var credential = result.credential;
-
-                //google access token
+        
+                //provider access token
                 var token = credential.accessToken; */
 
                 //signed in user info
                 var user = result.user;
-                //console.log(user);
+                console.log(user);
 
 
-                if (user.emailVerified == true) {
+                if (user.uid != null /* user.emailVerified == true */) {
                     Swal.fire({  //swall message
                         position: 'center',
                         icon: 'success',
                         title: 'Email Verified',
+                        showConfirmButton: true,
                         text: `${user.displayName}, now you can access blog`,
                         button: 'OK',
                     })
@@ -73,6 +96,7 @@ let mainFunc = {};
                         position: 'center',
                         icon: 'warning',
                         title: 'Email not verified',
+                        showConfirmButton: true,
                         text: `${user.displayName}, your email is not verified`,
                         button: 'Dismiss',
                     });
@@ -86,8 +110,8 @@ let mainFunc = {};
                 var credential = error.credential;
                 console.log(`Error Code: ${errorCode}, Message: ${errorMessage} , mail error: ${email}`);
             });
-    }
 
+    }
 
     /********************** FORM HANDLING ********************/
     const nameForm = document.getElementById('name-field'),
