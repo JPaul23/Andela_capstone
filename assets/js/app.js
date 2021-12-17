@@ -28,15 +28,66 @@ let mainFunc = {};
         password = document.getElementById('passwordLogin'),
         login = document.querySelector('.login-button');
 
-    //***************getting the current user **************
-
     login.addEventListener('click', () => {
         logIn(userLog, password);
         logInForm.reset();//reset the form
     });
 
 
-    /************************ SIGN OUT********************* */
+    /************************ AUTH APPS********************* */
+    /*================ Google========== */
+
+    const googleBtn = document.getElementById('google-btn');
+    googleBtn.addEventListener('click', () => {
+        googleSignIn();
+    });
+
+    //Create an instance of the Google provider 
+    function googleSignIn() {
+        const gProvider = new firebase.auth.GoogleAuthProvider();
+        auth.signInWithPopup(gProvider)
+            .then((result) => {
+                /* var credential = result.credential;
+
+                //google access token
+                var token = credential.accessToken; */
+
+                //signed in user info
+                var user = result.user;
+                //console.log(user);
+
+
+                if (user.emailVerified == true) {
+                    Swal.fire({  //swall message
+                        position: 'center',
+                        icon: 'success',
+                        title: 'Email Verified',
+                        text: `${user.displayName}, now you can access blog`,
+                        button: 'OK',
+                    })
+                        .then(() => window.location.replace('dashboard.html'));
+
+                }
+                else {
+                    Swal.fire({  //swall message
+                        position: 'center',
+                        icon: 'warning',
+                        title: 'Email not verified',
+                        text: `${user.displayName}, your email is not verified`,
+                        button: 'Dismiss',
+                    });
+                }
+            }).catch((error) => {
+                var errorCode = error.code;
+                var errorMessage = error.message;
+                // The email of the user's account used.
+                var email = error.email;
+                // The firebase.auth.AuthCredential type that was used.
+                var credential = error.credential;
+                console.log(`Error Code: ${errorCode}, Message: ${errorMessage} , mail error: ${email}`);
+            });
+    }
+
 
     /********************** FORM HANDLING ********************/
     const nameForm = document.getElementById('name-field'),
@@ -104,8 +155,6 @@ let mainFunc = {};
 
     });
 
-    //currently signed in user
-
     //login Function
     function logIn(email, password) {
 
@@ -135,35 +184,6 @@ let mainFunc = {};
                 });
             });
     }
-
-
-    //sign Out function
-    /*   function signOut() {
-          let uid = null;
-          auth.signInWithEmailAndPassword(email, password)
-              .then((Credential) => {
-                  uid = Credential.user.uid;
-                  console.log(`user uid: ${uid}`);
-                  Swal.fire({  //swall message
-                      position: 'center',
-                      icon: 'success',
-                      title: 'Success',
-                      text: ` You successfully logged in`,
-                      button: 'Dismiss',
-                  });
-                  loginPage.classList.remove('active-modal');
-              })
-              .catch(err => {
-                  Swal.fire({  //swal message
-                      position: 'center',
-                      icon: 'error',
-                      title: err.code,
-                      text: err.message,
-                      showConfirmButton: false,
-                      timer: 3500
-                  });
-              });
-      } */
 
     //signup function
     function signUp() {
@@ -215,14 +235,20 @@ let mainFunc = {};
         return database;
     }
 
-
     function storeUserData(name, phone, email, password, userId) {
         var database = createDb(`Users/${userId}`); //db instance
+        var photoUrl = null,
+            displayName = null,
+            emailVerification = null;
+
         database.set({
             Name: name,
             Email: email,
             Phone: phone,
-            Password: password
+            Password: password,
+            Photo: photoUrl,
+            displayname: displayName,
+            emailVerified: emailVerification
         })
             .then(console.log('Data stored'))
             .catch((err) => { console.log(err.message) });
@@ -263,8 +289,5 @@ let mainFunc = {};
         alert('Enter a correct Email');
         email.focus();
     }
-    /*  app_firebase.auth().signInWithEmailAndPassword(email = 'email@gmail.com', password = 'paul122')
-         .then((userCredential) => uid = userCredential.user.uid)
-         .catch((error) => console.log(error)); */
 
 })();

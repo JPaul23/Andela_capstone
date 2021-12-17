@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
+
+<!-- suchana/dashboard-my-profile.html  22 Nov 2019 04:16:41 GMT -->
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="user profile">
+
+    <title>TTECH-User profile</title>
+    <!-- Favicon -->
+    <!-- <link rel="shortcut icon" type="image/x-icon" href="assets/images/favicon.png"> -->
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--Default CSS-->
+    <link href="assets/css/default.css" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="assets/font/flaticon.html" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="assets/css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Dashboard CSS-->
+    <link href="assets/css/dashboard.css" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link rel="stylesheet"
+        href="../../../../cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+</head>
+
+<body>
+    <!--PRELOADER-->
+    <!-- <div id="preloader">
+        <div id="status"></div>
+    </div> -->
+
+    <!-- start Container Wrapper -->
+    <div id="container-wrapper">
+        <!-- Dashboard -->
+        <div id="dashboard">
+
+            <!-- Responsive Navigation Trigger -->
+            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+
+            <div class="dashboard-sticky-nav">
+                <div class="content-left pull-left">
+                    <a href="dashboard.html"><img src="" alt="logo">TTECH</a>
+                </div>
+                <div class="content-right pull-right">
+                    <div class="search-bar">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="search" placeholder="Search Now">
+                                <a href="#"><span class="search_btn"><i class="fa fa-search"
+                                            aria-hidden="true"></i></span></a>
+                            </div>
+                        </form>
+                    </div>
+                    <!-- profile header -->
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="profile-sec">
+                                <div class="dash-image">
+                                    <img src="assets/images/comment1.jpg" alt="">
+                                </div>
+                                <div class="dash-content">
+                                    <h4>paul</h4>
+                                    <span>Developer</span>
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
+                            <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
+                            <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
+                            <li><a href="#"><i class="sl sl-icon-power"></i>Logout</a></li>
+                        </ul>
+                    </div>
+
+                </div>
+            </div>
+
+            <div class="dashboard-nav">
+                <div class="dashboard-nav-inner">
+                    <ul>
+                        <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                        <li class="active"><a href="dashboard-my-profile.html"><i class="sl sl-icon-user"></i> Edit
+                                Profile</a></li>
+                        <li><a href="dashboard-addtour.html"><i class="sl sl-icon-plus"></i> Add Post</a></li>
+                        <li><a href="index.html"><i class="sl sl-icon-power"></i> Logout</a></li>
+                    </ul>
+                </div>
+            </div>
+
+
+            <div class="dashboard-content">
+                <div class="dashboard-form">
+                    <div class="row">
+
+                        <!-- Profile -->
+                        <div class="col-lg-6 col-md-6 col-xs-12 padding-right-30">
+                            <div class="dashboard-list-box">
+                                <h4 class="gray">Profile Details</h4>
+                                <div class="dashboard-list-box-static">
+
+                                    <!-- Avatar -->
+                                    <div class="edit-profile-photo">
+                                        <img src="images/user-avatar.jpg" alt="">
+                                        <div class="change-photo-btn">
+                                            <div class="photoUpload">
+                                                <span><i class="fa fa-upload"></i> Upload Photo</span>
+                                                <input type="file" class="upload" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <!-- Details -->
+                                    <div class="my-profile">
+
+                                        <label>Your Name *</label>
+                                        <input placeholder="Tom Perrin" type="text">
+
+                                        <label>Phone Number *</label>
+                                        <input placeholder="(123) 123-456" type="tel">
+
+                                        <label>Email Address *</label>
+                                        <input placeholder="tom@example.com" type="email">
+
+                                        <label>Your Bio *</label>
+                                        <textarea name="notes" id="notes" cols="30"
+                                            rows="10">Maecenas quis consequat libero, a feugiat eros. Nunc ut lacinia tortor morbi ultricies laoreet ullamcorper phasellus semper</textarea>
+
+                                        <label class="twitter-input"><i class="fa fa-twitter"></i> Twitter</label>
+                                        <input placeholder="https://www.twitter.com/" type="text">
+
+                                        <label class="fb-input"><i class="fa fa-facebook-square"></i> Facebook</label>
+                                        <input placeholder="https://www.facebook.com/" type="text">
+
+                                    </div>
+
+                                    <button class="button">Save Changes</button>
+
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Change Password -->
+                        <div class="col-lg-6 col-md-6 col-xs-12 padding-left-30">
+                            <div class="dashboard-list-box margin-top-0">
+                                <h4 class="gray">Your Address</h4>
+                                <div class="dashboard-list-box-static">
+
+                                    <!-- Change Password -->
+                                    <div class="my-profile">
+                                        <label class="margin-top-0">Company Name</label>
+                                        <input type="text">
+
+                                        <label>Address *</label>
+                                        <input type="text">
+
+                                        <label>Zip Code *</label>
+                                        <input type="text">
+
+                                        <label>Country *</label>
+                                        <input type="text">
+
+                                        <label>City *</label>
+                                        <input type="text">
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+            </div>
+
+            <!-- Content / End -->
+            <!-- Copyrights -->
+            <div class="copyrights">
+                <p>© 2021 TTech. All rights reserved.</p>
+            </div>
+        </div>
+        <!-- Dashboard / End -->
+    </div>
+    <!-- end Container Wrapper -->
+
+
+    <!-- Back to top start -->
+    <div id="back-to-top">
+        <a href="#"></a>
+    </div>
+    <!-- Back to top ends -->
+
+    <!-- *Scripts* -->
+    <script src="assets/js/jquery-3.2.1.min.js"></script>
+    <script src="assets/js/bootstrap.min.html"></script>
+    <script src="assets/js/plugin.js"></script>
+    <script src="assets/js/preloader.html"></script>
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/dashboard-custom.js"></script>
+    <script src="assets/js/jpanelmenu.min.js"></script>
+    <script src="assets/js/counterup.min.js"></script>
+</body>
+
+<!-- suchana/dashboard-my-profile.html  22 Nov 2019 04:16:51 GMT -->
+
+</html>
