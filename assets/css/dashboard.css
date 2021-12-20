@@ -1306,7 +1306,7 @@ mark { border-radius: 4px; }
     line-height: 40px;
 }
 
-/
+
 
 /* ---------------------------------- */
 /* Info Box
@@ -3011,7 +3011,7 @@ a.dashboard-responsive-nav-trigger { display: none; }
 	color: #fff;
 	background-color: #0000004d;
 }
-.dashboard-nav ul li.active:after{
+/* .dashboard-nav ul li.active:after{
 	position: absolute;
 	content: '';
 	width: 0;
@@ -3021,7 +3021,7 @@ a.dashboard-responsive-nav-trigger { display: none; }
 	border-bottom: 15px solid transparent;
 	top: 14px;
 	right: 0;
-}
+} */
 
 /* ---------------------------------- */
 /* Sticky Navigation
@@ -3774,7 +3774,7 @@ a.close-list-item {
 @media(max-width: 767px){
 	.history .textright{text-align: left;}
 
-	.dashboard-list-box .button.gray{margin-top: 6px: }
+	.dashboard-list-box .button.gray{margin-top: 6px; }
 }
 
 /* ------------------------------------------------------------------- */

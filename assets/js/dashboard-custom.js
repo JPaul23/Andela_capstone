@@ -420,24 +420,18 @@ const auth = app_firebase.auth();
 const signOutBtn = document.getElementById('logout');
 
 //checking the logged user
-const user = null;
+/* const user = null;
 const editProfile = document.getElementById('edit');
 editProfile.addEventListener('click', () => {
 	auth.onAuthStateChanged((user) => {
 		if (user) {
-			// User is signed in, see docs for a list of available properties
-			// https://firebase.google.com/docs/reference/js/firebase.User
-
-			/* var uid = user.uid; */
+			// var uid = user.uid;
 			var username = user.displayName;
 			console.log('username: ' + username);
-			// ...
 		} else {
-			// User is signed out
-
 		}
 	});
-});
+}); */
 
 
 signOutBtn.addEventListener('click', () => {

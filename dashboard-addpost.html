@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="zxx">
+
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Add Post">
+
+    <title>TTECH-Add Post</title>
+    <!-- Favicon -->
+    <!--  <link rel="shortcut icon" type="image/x-icon" href="images/favicon.png"> -->
+
+    <!-- Bootstrap core CSS -->
+    <link href="assets/css/bootstrap.min.css" rel="stylesheet" type="text/css">
+    <!--Default CSS-->
+    <link href="assets/css/default.css" rel="stylesheet" type="text/css">
+    <!--Custom CSS-->
+    <link href="assets/css/style.css" rel="stylesheet" type="text/css">
+    <!--Flaticons CSS-->
+    <link href="assets/font/flaticon.html" rel="stylesheet" type="text/css">
+    <!--Plugin CSS-->
+    <link href="assets/css/plugin.css" rel="stylesheet" type="text/css">
+    <!--Dashboard CSS-->
+    <link href="assets/css/dashboard.css" rel="stylesheet" type="text/css">
+
+    <link href="assets/css/icons.css" rel="stylesheet" type="text/css">
+    <!--Font Awesome-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <!-- sweetalert -->
+    <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-default/default.css" rel="stylesheet">
+
+    <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+</head>
+
+<body>
+
+    <!-- Preloader -->
+    <!-- <div id="preloader">
+        <div id="status"></div>
+    </div> -->
+    <!-- Preloader Ends -->
+
+    <!-- start Container Wrapper -->
+    <div id="container-wrapper">
+        <!-- Dashboard -->
+        <div id="dashboard">
+
+            <!-- Responsive Navigation Trigger -->
+            <a href="#" class="dashboard-responsive-nav-trigger"><i class="fa fa-reorder"></i> Dashboard Navigation</a>
+
+            <div class="dashboard-sticky-nav">
+                <div class="content-left pull-left">
+                    <a href="dashboard.html"><img src="images/logo.png" alt="logo">TTECH</a>
+                </div>
+                <div class="content-right pull-right">
+                    <div class="search-bar">
+                        <form>
+                            <div class="form-group">
+                                <input type="text" class="form-control" id="search" placeholder="Search Now">
+                                <a href="#"><span class="search_btn"><i class="fa fa-search"
+                                            aria-hidden="true"></i></span></a>
+                            </div>
+                        </form>
+                    </div>
+
+                    <div class="dropdown">
+                        <a class="dropdown-toggle" data-toggle="dropdown">
+                            <div class="profile-sec">
+                                <div class="dash-image">
+                                    <img src="assets/images/comment1.jpg" alt="">
+                                </div>
+                                <div class="dash-content">
+                                    <h4>Paul</h4>
+                                    <span>Developer</span>
+                                </div>
+                            </div>
+                        </a>
+                        <ul class="dropdown-menu">
+                            <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
+                            <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
+                            <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
+                            <li><a href="#"><i class="sl sl-icon-power"></i>Logout</a></li>
+                        </ul>
+                    </div>
+
+
+                </div>
+            </div>
+
+            <div class="dashboard-nav">
+                <div class="dashboard-nav-inner">
+                    <ul>
+                        <li><a href="dashboard.html"><i class="sl sl-icon-settings"></i> Dashboard</a></li>
+                        <li><a href="myprofile.html"><i class="sl sl-icon-user"></i> Edit Profile</a></li>
+                        <li class="active"><a href="dashboard-addpost.html"><i class="sl sl-icon-plus"></i> Add Post</a>
+                        </li>
+                        <li><a href="#"><i class="sl sl-icon-power"></i> Logout</a></li>
+
+                    </ul>
+                </div>
+            </div>
+
+            <div class="dashboard-content">
+                <div class="row">
+                    <!-- Listings -->
+                    <div class="col-lg-12 col-sm-12">
+                        <div id="add-listing">
+
+                            <!-- Section -->
+                            <div class="add-listing-section">
+
+                                <!-- Headline -->
+                                <div class="add-listing-headline">
+                                    <h3><i class="sl sl-icon-doc"></i> Basic Informations</h3>
+                                </div>
+
+                                <!-- Title -->
+                                <div class="row with-forms">
+                                    <div class="col-md-12">
+                                        <label>Title of the Article <i class="tip"
+                                                data-tip-content="Name to be dislayed"></i></label>
+                                        <input class="search-field" type="text" value="" />
+                                    </div>
+                                </div>
+
+                                <!-- Row -->
+                                <div class="row with-forms">
+
+                                    <!-- date -->
+                                    <div class="col-md-6">
+                                        <label>Date</label>
+                                        <input type="date" placeholder="Select the date">
+                                    </div>
+
+                                    <!-- Author -->
+                                    <div class="col-md-6">
+                                        <label>Author <i class="tip" data-tip-content="Name of the author"></i></label>
+                                        <input type="text" placeholder="Name of the Author">
+                                    </div>
+
+                                </div>
+                                <!-- Row / End -->
+                            </div>
+                            <!-- Section / End -->
+                            <!-- Section -->
+                            <div class="add-listing-section">
+
+                                <!-- Headline -->
+                                <div class="add-listing-headline">
+                                    <h3><i class="sl sl-icon-picture"></i> Gallery</h3>
+
+                                </div>
+
+                                <!-- Dropzone -->
+                                <div class="submit-section">
+                                    <form action="https://cyclonethemes.com/file-upload" class="dropzone">
+                                        <input type="file" accept="image/*">
+                                    </form>
+                                </div>
+                            </div>
+                            <!-- Section / End -->
+
+                            <!-- Section -->
+                            <div class="add-listing-section">
+
+                                <!-- Headline -->
+                                <div class="add-listing-headline">
+                                    <h3><i class="sl sl-icon-docs"></i> Details</h3>
+                                </div>
+
+                                <!-- Description -->
+                                <div class="form">
+                                    <label>Description</label>
+                                    <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary"
+                                        spellcheck="true"></textarea>
+                                </div>
+
+                                <!-- Section / End -->
+                                <a href="#" class="button preview">Post <i class="fa fa-arrow-circle-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Content / End -->
+                <!-- Copyrights -->
+                <div class="copyrights">
+                    <p>© 2021 TTech. All rights reserved.</p>
+                </div>
+            </div>
+            <!-- Dashboard / End -->
+        </div>
+        <!-- end Container Wrapper -->
+
+
+        <!-- Back to top start -->
+        <div id="back-to-top">
+            <a href="#"></a>
+        </div>
+        <!-- Back to top ends -->
+
+        <!-- *Scripts* -->
+        <script src="assets/js/jquery-3.2.1.min.js"></script>
+        <script src="assets/js/bootstrap.min.html"></script>
+        <script src="assets/js/plugin.js"></script>
+        <script src="assets/js/main.js"></script>
+        <script src="assets/js/dashboard-custom.js"></script>
+        <script src="assets/js/jpanelmenu.min.js"></script>
+        <script src="assets/js/counterup.min.js"></script>
+</body>
+
+<!-- suchana/dashboard-addtour.html  22 Nov 2019 04:16:51 GMT -->
+
+</html>
