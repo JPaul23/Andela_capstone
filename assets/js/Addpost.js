@@ -13,9 +13,9 @@ let secndFunc = {};
         title = document.getElementById('title'),
         date = document.getElementById('date'),
         authorName = document.getElementById('author'),
-        photoPost = document.getElementById('photo-post'),
-        textPost = document.getElementById('text-post');
+        photoPost = document.getElementById('photo-post');
 
+    //textPost = document.getElementById('text-post');
 
     /*=============== uploading picture================ */
 
@@ -50,7 +50,7 @@ let secndFunc = {};
                     /* ================ then store data in NoSQL============*/
                     db.collection("posts").add({
                         Title: title.value,
-                        Date: date.value,
+                        Date: firebase.firestore.Timestamp.fromDate(new Date(date.value)),
                         Author: authorName.value,
                         Image: url
                         /* Description: message ???Bugs */
