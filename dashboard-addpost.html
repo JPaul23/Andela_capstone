@@ -29,7 +29,6 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
     <!-- sweetalert -->
     <link href="//cdn.jsdelivr.net/npm/@sweetalert2/theme-default/default.css" rel="stylesheet">
-
     <script src="//cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
 </head>
 
@@ -80,7 +79,7 @@
                             <li><a href="#"><i class="sl sl-icon-settings"></i>Settings</a></li>
                             <li><a href="#"><i class="sl sl-icon-user"></i>Profile</a></li>
                             <li><a href="#"><i class="sl sl-icon-lock"></i>Change Password</a></li>
-                            <li><a href="#"><i class="sl sl-icon-power"></i>Logout</a></li>
+                            <li id="logout"><a href="#"><i class="sl sl-icon-power"></i>Logout</a></li>
                         </ul>
                     </div>
 
@@ -95,7 +94,7 @@
                         <li><a href="myprofile.html"><i class="sl sl-icon-user"></i> Edit Profile</a></li>
                         <li class="active"><a href="dashboard-addpost.html"><i class="sl sl-icon-plus"></i> Add Post</a>
                         </li>
-                        <li><a href="#"><i class="sl sl-icon-power"></i> Logout</a></li>
+                        <li id="logout"><a href="#"><i class="sl sl-icon-power"></i> Logout</a></li>
 
                     </ul>
                 </div>
@@ -120,7 +119,7 @@
                                     <div class="col-md-12">
                                         <label>Title of the Article <i class="tip"
                                                 data-tip-content="Name to be dislayed"></i></label>
-                                        <input class="search-field" type="text" value="" />
+                                        <input class="search-field" type="text" value="" id="title" required>
                                     </div>
                                 </div>
 
@@ -130,13 +129,13 @@
                                     <!-- date -->
                                     <div class="col-md-6">
                                         <label>Date</label>
-                                        <input type="date" placeholder="Select the date">
+                                        <input type="date" placeholder="Select the date" id="date">
                                     </div>
 
                                     <!-- Author -->
                                     <div class="col-md-6">
                                         <label>Author <i class="tip" data-tip-content="Name of the author"></i></label>
-                                        <input type="text" placeholder="Name of the Author">
+                                        <input type="text" placeholder="Name of the Author" id="author" required>
                                     </div>
 
                                 </div>
@@ -154,8 +153,8 @@
 
                                 <!-- Dropzone -->
                                 <div class="submit-section">
-                                    <form action="https://cyclonethemes.com/file-upload" class="dropzone">
-                                        <input type="file" accept="image/*">
+                                    <form action="#" class="dropzone">
+                                        <input id="photo-post" type="file" accept="image/*">
                                     </form>
                                 </div>
                             </div>
@@ -171,13 +170,17 @@
 
                                 <!-- Description -->
                                 <div class="form">
-                                    <label>Description</label>
+                                    <!-- <label>Description</label> -->
+                                    <!-- <div class='WYSIWYG textarea' contenteditable=true>
+
+                                    </div> -->
                                     <textarea class="WYSIWYG" name="summary" cols="40" rows="3" id="summary"
-                                        spellcheck="true"></textarea>
+                                        spellcheck="true" id="text-post"></textarea>
                                 </div>
 
                                 <!-- Section / End -->
-                                <a href="#" class="button preview">Post <i class="fa fa-arrow-circle-right"></i></a>
+                                <a id="post" href="#" class="button preview">Post <i
+                                        class="fa fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                     </div>
@@ -195,9 +198,9 @@
 
 
         <!-- Back to top start -->
-        <div id="back-to-top">
+        <!-- <div id="back-to-top">
             <a href="#"></a>
-        </div>
+        </div> -->
         <!-- Back to top ends -->
 
         <!-- *Scripts* -->
@@ -205,11 +208,22 @@
         <script src="assets/js/bootstrap.min.html"></script>
         <script src="assets/js/plugin.js"></script>
         <script src="assets/js/main.js"></script>
-        <script src="assets/js/dashboard-custom.js"></script>
+
         <script src="assets/js/jpanelmenu.min.js"></script>
         <script src="assets/js/counterup.min.js"></script>
+
+        <!-- firebase and app -->
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-app.js""></script>
+        <script src=" https://www.gstatic.com/firebasejs/8.10.0/firebase-auth.js"></script>
+        <script src=" https://www.gstatic.com/firebasejs/8.10.0/firebase-database.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-firestore.js"></script>
+        <script src="https://www.gstatic.com/firebasejs/8.10.0/firebase-storage.js"></script>
+
+        <script src="assets/js/firebase.js"></script>
+        <script src="assets/js/app.js"></script>
+        <script src="assets/js/dashboard-custom.js"></script>
+        <script src="assets/js/Addpost.js"></script>
 </body>
 
-<!-- suchana/dashboard-addtour.html  22 Nov 2019 04:16:51 GMT -->
 
 </html>

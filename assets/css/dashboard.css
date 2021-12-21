@@ -4763,3 +4763,9 @@ a.close-list-item {
 .booking-table .button i{
 	padding: 0;
 }
+/* div editable */
+.textarea{
+	width:auto;
+	height:100px;
+	border:1px solid grey;
+}

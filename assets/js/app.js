@@ -16,6 +16,7 @@ let mainFunc = {};
         signUpForm = document.getElementById('signup-form');
 
     signUpBtn.addEventListener('click', (evt) => {
+        evt.preventDefault()
         signUp();
         signUpForm.reset();
     });
