@@ -50,7 +50,7 @@ let secndFunc = {};
                     /* ================ then store data in NoSQL============*/
                     db.collection("posts").add({
                         Title: title.value,
-                        Date: firebase.firestore.Timestamp.fromDate(new Date(date.value)),
+                        Date: date.value,
                         Author: authorName.value,
                         Image: url
                         /* Description: message ???Bugs */
