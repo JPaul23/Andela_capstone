@@ -4,6 +4,43 @@ let mainFunc = {};
 (() => {
     const auth = app_firebase.auth(); //initialize auth of firebase
 
+    /* ************  Download the CV ************ */
+    const fireStorage = app_firebase.storage() //initialize the storage
+    const cvRef = fireStorage.refFromURL('gs://andela-cap.appspot.com/Cv/CV.pdf'); //cv reference
+
+    const downloadCV = document.getElementById('download_cv');
+
+    downloadCV.addEventListener('click', () => {
+        //cvRef.child('Cv/CV.pdf').getDownloadURL()
+        cvRef.getDownloadURL()
+            .then((url) => {
+                //window.open(url);
+                var link = document.createElement("a");
+                if (link.download !== undefined) {
+                    link.setAttribute("href", url);
+                    link.setAttribute("target", "_blank");
+                    link.style.visibility = 'hidden';
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                }
+
+
+                /* var xhr = new XMLHttpRequest();
+                xhr.responseType = 'blob';
+                xhr.onload = (event) => {
+                    var blob = xhr.response;
+                };
+                xhr.open('GET', url);
+                xhr.send(); */
+            })
+            .catch((error) => {
+                console.log(error.code);
+                console.log(error.message);
+            });
+    });
+
+
     /******************** sign up user ******************** */
     const username = document.getElementById('usernameSign'),
         userEmail = document.getElementById('email'),
@@ -50,7 +87,17 @@ let mainFunc = {};
     }
 
     /*================ FaceBook ========== */
+    const fbBtn = document.getElementById('facebook-btn');
+    fbBtn.addEventListener('click', () => {
+        fbSignIn();
+    });
 
+    //Create an instance of the facebook provider 
+    function fbSignIn() {
+        const fbProvider = new firebase.auth.FacebookAuthProvider();
+        SignWithPopup(fbProvider);
+
+    }
     /*================ Github ============= */
 
     const gitBtn = document.getElementById('github-btn');
@@ -58,7 +105,7 @@ let mainFunc = {};
         gitSignIn();
     });
 
-    //Create an instance of the Google provider 
+    //Create an instance of the github provider 
     function gitSignIn() {
         const gitProvider = new firebase.auth.GithubAuthProvider();
         SignWithPopup(gitProvider);
@@ -80,7 +127,7 @@ let mainFunc = {};
                 console.log(user);
 
 
-                if (user.uid != null /* user.emailVerified == true */) {
+                if (user.emailVerified == true) {
                     Swal.fire({  //swall message
                         position: 'center',
                         icon: 'success',
@@ -108,7 +155,7 @@ let mainFunc = {};
                 // The email of the user's account used.
                 var email = error.email;
                 // The firebase.auth.AuthCredential type that was used.
-                var credential = error.credential;
+
                 console.log(`Error Code: ${errorCode}, Message: ${errorMessage} , mail error: ${email}`);
             });
 
