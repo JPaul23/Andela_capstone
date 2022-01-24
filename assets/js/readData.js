@@ -28,27 +28,41 @@
             querySnapshot.forEach((doc) => {
 
                 console.log(`${doc.data().Author}`);
-                rowContent.innerHTML += `<div class="col-md-6 col-sm-12 mar-bottom-30">
-         <div class="blog-post_wrapper image-wrapper">
-             <div class="blog-post-image">
-                 <img src="${doc.data().Image}" />
-             </div>
-             <div class="post-content">
+                rowContent.innerHTML +=
+                    `<div class="col-md-6 col-sm-12 mar-bottom-30">
+                    <div class="blog-post_wrapper image-wrapper">
+                        <div class="blog-post-image">
+                            <img src="${doc.data().Image}" />
+                    </div>
+                    <div class="post-content">
      
-                 <div class="post-date">
-                     <p><a href="#">${doc.data().Date}</a></p>
-                 </div>
-                 <h2 class="entry-title">
-                     <a href="blog-details.html" class="white">${doc.data().Title}</a>
-                 </h2>
-                 <div class="item-meta white">
-                     <span>by</span>
-                     <a class="author-name white" href="author.html">${doc.data().Author}</a>
-                 </div>
+                        <div class="post-date">
+                            <p><a href="#">${doc.data().Date}</a></p>
+                        </div>
+                        <h2 class="entry-title">
+                            <a href="blog-details.html" class="white">${doc.data().Title}</a>
+                        </h2>
+                        <div class="item-meta white">
+                            <span>by</span>
+                            <a class="author-name white" href="author.html">${doc.data().Author}</a>
+                        </div>
      
-             </div>
-         </div>
-     </div>`;
+                        </div>
+                    </div>
+                    <ul class="list-inline m-0 buttons" id="btns">
+                                            
+                        <li class="list-inline-item">
+                            <button class="btn btn-success btn-sm rounded-0" type="button"
+                            data-toggle="tooltip" data-placement="top" title="Edit"><i
+                            class="fas fa-edit"></i></button>
+                        </li>
+                        <li class="list-inline-item">
+                            <button class="btn btn-danger btn-sm rounded-0" type="button"
+                            data-toggle="tooltip" data-placement="top" title="Delete"><i
+                            class="fas fa-trash"></i></button>
+                        </li>
+                    </ul>
+                 </div>`;
             });
         })
             .then(() => {

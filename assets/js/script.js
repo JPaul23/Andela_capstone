@@ -40,7 +40,7 @@ loginLink.addEventListener('click', () => {
         timer: 1500
     })/* .then((value) => {
         setTimeout(function(){
-            window.location.replace("../index.html");
+            window.location.replace("../home.html");
         }, 1000) */
 //  });
 //}); 
