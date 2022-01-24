@@ -1,1 +1,6 @@
-‘{}’
+{
+    "name": "something/something",
+    "description": "Andela capstone",
+    "type": "project",
+    "license": "MIT"
+}
