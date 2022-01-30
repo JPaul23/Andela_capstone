@@ -5,8 +5,8 @@ let mainFunc = {};
     //const auth = app_firebase.auth(); //initialize auth of firebase
 
     /* ************  Download the CV ************ */
-    const fireStorage = app_firebase.storage() //initialize the storage
-    const cvRef = fireStorage.refFromURL('gs://andela-cap.appspot.com/Cv/CV.pdf'); //cv reference
+    //const fireStorage = app_firebase.storage() //initialize the storage
+    //const cvRef = fireStorage.refFromURL('gs://andela-cap.appspot.com/Cv/CV.pdf'); //cv reference
 
     const downloadCV = document.getElementById('download_cv');
 
