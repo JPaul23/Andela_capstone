@@ -416,7 +416,7 @@ $.scrollTo = $.fn.scrollTo = function (x, y, options) {
 
 /* added by Paul */
 
-const auth = app_firebase.auth();
+//const auth = app_firebase.auth();
 const signOutBtn = document.getElementById('logout');
 
 //checking the logged user
@@ -435,7 +435,40 @@ editProfile.addEventListener('click', () => {
 
 
 signOutBtn.addEventListener('click', () => {
-	console.log(app_firebase);
+
+	fetch('https://andela-node.herokuapp.com/api/v1/user/logout', {
+		method: 'GET',
+		headers: {
+			'Content-Type': 'application/json'
+		}
+	})
+		.then(res => res.json())
+		.then(data => {
+			console.log(data);
+			Swal.fire({
+				position: 'center',
+				icon: 'success',
+				title: 'BYE!',
+				text: ` You successfully logged out`,
+				time: '4500',
+			})
+				.then(() => window.location.replace('index.html'));
+
+		})
+		.catch(err => {
+			console.log(err.code)
+			console.log(err.message)
+			Swal.fire({  //swal message
+				position: 'center',
+				icon: 'error',
+				title: err.code,
+				text: err.message,
+				showConfirmButton: false,
+				timer: 3500
+			});
+		})
+
+	/* console.log(app_firebase);
 	auth.signOut().then(() => {
 		// Sign-out successful.
 		Swal.fire({
@@ -457,6 +490,6 @@ signOutBtn.addEventListener('click', () => {
 			text: err.message,
 			showConfirmButton: false
 		});
-	});
+	}); */
 	// sign out to index file
 });

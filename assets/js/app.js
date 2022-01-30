@@ -2,7 +2,7 @@
 let mainFunc = {};
 
 (() => {
-    const auth = app_firebase.auth(); //initialize auth of firebase
+    //const auth = app_firebase.auth(); //initialize auth of firebase
 
     /* ************  Download the CV ************ */
     const fireStorage = app_firebase.storage() //initialize the storage
@@ -59,7 +59,8 @@ let mainFunc = {};
         login = document.querySelector('.login-button');
 
     login.addEventListener('click', () => {
-        logIn(userLog, password);
+
+        logIn();
         logInForm.reset();//reset the form
     });
 
@@ -219,10 +220,53 @@ let mainFunc = {};
 
     });
 
-    //login Function
-    function logIn(email, password) {
 
-        let user = null;
+    /********************** FUNCTIONS  ********************/
+
+    //login Function
+    function logIn() {
+        var logEmail = userLog.value;
+        var logPassword = password.value;
+
+        fetch('https://andela-node.herokuapp.com/api/v1/user/login', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                email: `${logEmail}`,
+                password: `${logPassword}`
+            })
+        })
+            .then(res => res.json())
+            .then(data => {
+                //console.log(data);
+                /* Swal.fire({  //swall message
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message,
+                    time: '3500',
+                }); */
+                loginPage.classList.remove('active-modal');
+                window.location.replace('dashboard.html');
+
+            })
+            .catch(err => {
+                console.log(err.code)
+                //console.log(err.message)
+                /* Swal.fire({  //swal message
+                    position: 'center',
+                    icon: 'error',
+                    title: err.code,
+                    text: err.message,
+                    showConfirmButton: false,
+                    timer: 3500
+                }); */
+            })
+
+
+        /* let user = null;
         auth.signInWithEmailAndPassword(email.value, password.value)
             .then((Credential) => {
                 user = Credential.user;
@@ -246,7 +290,7 @@ let mainFunc = {};
                     showConfirmButton: false,
                     timer: 3500
                 });
-            });
+            }); */
     }
 
     //signup function
@@ -261,7 +305,48 @@ let mainFunc = {};
         //conditions
 
         //signing in
-        auth.createUserWithEmailAndPassword(usermail, pswd).then((credential) => {
+
+        fetch('https://andela-node.herokuapp.com/api/v1/user/signup', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                username: `${userName}`,
+                phone: `${userPhone}`,
+                email: `${usermail}`,
+                password: `${pswd}`
+            })
+        })
+            .then(res => res.json()
+            )
+            .then(data => {
+                console.log(data)
+                Swal.fire({  //swall message
+                    position: 'center',
+                    icon: 'success',
+                    title: 'Success',
+                    text: data.message,
+                    button: 'Dismiss',
+                });
+                //removing class on signup and login page
+                signupPage.classList.remove('active-modal'),
+                    loginPage.classList.add('active-modal')
+            })
+            .catch(err => {
+                console.log(err.code)
+                console.log(err.message)
+                Swal.fire({  //swal message
+                    position: 'center',
+                    icon: 'error',
+                    title: 'Something Is Wrong',
+                    text: err.message,
+                    showConfirmButton: false,
+                    timer: 3500
+                });
+
+            })
+        /* auth.createUserWithEmailAndPassword(usermail, pswd).then((credential) => {
             uid = credential.user.uid; //capturing the uid of the user
             storeUserData(userName, userPhone, usermail, pswd, uid);
 
@@ -287,8 +372,8 @@ let mainFunc = {};
                 showConfirmButton: false,
                 timer: 3500
             });
-            /*  console.log(err.message); */
-        });
+             console.log(err.message);
+        }); */
     }
 
 
